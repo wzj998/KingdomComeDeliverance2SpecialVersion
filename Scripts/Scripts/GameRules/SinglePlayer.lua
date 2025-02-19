@@ -208,32 +208,32 @@ end
 
 -- =============================================================================
 function SinglePlayer:ClientViewShake(pos, distance, radiusMin, radiusMax, amount, duration, frequency, source, rnd)
-	-- if (g_localActor and g_localActor.actor) then
-	-- 	if (distance) then
-	-- 		self:ViewShake(g_localActor, distance, radiusMin, radiusMax, amount, duration, frequency, source, rnd)
-	-- 		return
-	-- 	end
-	-- 	if (pos) then
-	-- 		local delta = self.tempVec
-	-- 		VectorUtils.Copy(delta, pos)
-	-- 		delta = VectorUtils.Subtract(delta, g_localActor:GetWorldPos())
-	-- 		local dist = VectorUtils.Length(delta)
-	-- 		self:ViewShake(g_localActor, dist, radiusMin, radiusMax, amount, duration, frequency, source, rnd)
-	-- 		return
-	-- 	end
-	-- end
+	if (g_localActor and g_localActor.actor) then
+		if (distance) then
+			self:ViewShake(g_localActor, distance, radiusMin, radiusMax, amount, duration, frequency, source, rnd)
+			return
+		end
+		if (pos) then
+			local delta = self.tempVec
+			VectorUtils.Copy(delta, pos)
+			delta = VectorUtils.Subtract(delta, g_localActor:GetWorldPos())
+			local dist = VectorUtils.Length(delta)
+			self:ViewShake(g_localActor, dist, radiusMin, radiusMax, amount, duration, frequency, source, rnd)
+			return
+		end
+	end
 end
 
 -- =============================================================================
 function SinglePlayer:ViewShake(player, distance, radiusMin, radiusMax, amount, duration, frequency, source, rnd)
-	local deltaDist = radiusMax - distance
-	rnd = rnd or 0.0
-	if (deltaDist > 0.0) then
-		local r = math.min(1, deltaDist / (radiusMax - radiusMin))
-		local amt = amount * r
-		local halfDur = duration * 0.5
-		player.actor:SetViewShake({x = 2 * g_Deg2Rad * amt, y = 2 * g_Deg2Rad * amt, z = 2 * g_Deg2Rad * amt}, {x = 0.02 * amt, y = 0.02 * amt, z = 0.02 * amt}, halfDur + halfDur * r, 1 / 20, rnd)
-	end
+	-- local deltaDist = radiusMax - distance
+	-- rnd = rnd or 0.0
+	-- if (deltaDist > 0.0) then
+	-- 	local r = math.min(1, deltaDist / (radiusMax - radiusMin))
+	-- 	local amt = amount * r
+	-- 	local halfDur = duration * 0.5
+	-- 	player.actor:SetViewShake({x = 2 * g_Deg2Rad * amt, y = 2 * g_Deg2Rad * amt, z = 2 * g_Deg2Rad * amt}, {x = 0.02 * amt, y = 0.02 * amt, z = 0.02 * amt}, halfDur + halfDur * r, 1 / 20, rnd)
+	-- end
 end
 
 -- =============================================================================
