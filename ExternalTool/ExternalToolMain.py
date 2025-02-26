@@ -17,8 +17,8 @@ def set_b_auto_run(value_new):
     b_auto_run = value_new
 
 def on_esc_release():
-    # 当检测到 Esc 键按下时，延迟 0.2 秒
-    time.sleep(0.2)
+    # 当检测到 Esc 键按下时，延迟
+    time.sleep(0.3)
     # 然后模拟按下 F3 键
     keyboard.press_and_release('f3')
     print("按下 f3")
